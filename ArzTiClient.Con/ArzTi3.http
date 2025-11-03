@@ -1,0 +1,430 @@
+@hostname = localhost:7277
+@baseUrl = https://{{hostname}}
+@basicauth=YXBvdGlfdXNlcl9yenN0ZWluOjEyMzQ1Ng==
+@username = apoti_user_rzstein
+@password = 123456
+@tenant = default
+
+### API Info
+GET {{baseUrl}}/api/health/arzsw
+Accept: application/json
+
+### Health Status
+GET {{baseUrl}}/api/health/ready
+Accept: application/json
+
+### Get System Resources
+GET {{baseUrl}}/api/health/system
+Accept: application/json
+
+### Authentication Test
+# @name login
+GET {{baseUrl}}/api/
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Apotheken Test
+GET {{baseUrl}}/api/Apotheken?page=1&pageSize=1
+Authorization: Basic {{basicauth}}
+Accept: application/json
+
+
+###
+# Prescription Operations
+###
+
+### Get New Prescriptions (default page and size)
+GET {{baseUrl}}/v2/rezept
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Get New Prescriptions (with pagination)
+GET {{baseUrl}}/v2/rezept?page=1&pageSize=100
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Get New Prescriptions (with type filter)
+GET {{baseUrl}}/v2/rezept?page=1&pageSize=100&rezeptType=E-Rezept
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Get Prescription by UUID
+GET {{baseUrl}}/v2/rezept/12345
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Get Archived Prescriptions
+GET {{baseUrl}}/v2/rezept/archived?page=1&pageSize=50
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Get Prescription Statistics
+GET {{baseUrl}}/v2/rezept/statistics
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Mark Prescriptions As Read
+POST {{baseUrl}}/v2/rezept/mark-as-read
+Authorization: Basic {{basicauth}}
+
+Content-Type: application/json
+Accept: application/json
+
+{
+    "prescriptions": [
+        {
+            "rezeptUuid": "12345",
+            "type": "E-Rezept"
+        },
+        {
+            "rezeptUuid": "67890",
+            "type": "Muster16"
+        }
+    ]
+}
+
+### Mark Prescriptions As Billed (Abgerechnet)
+POST {{baseUrl}}/v2/rezept/set-abgerechnet
+Authorization: Basic {{basicauth}}
+
+Content-Type: application/json
+Accept: application/json
+
+{
+    "prescriptions": [
+        {
+            "rezeptUuid": "12345",
+            "type": "E-Rezept"
+        },
+        {
+            "rezeptUuid": "67890",
+            "type": "Muster16"
+        }
+    ]
+}
+
+### Export Prescriptions to CSV
+POST {{baseUrl}}/v2/rezept/export
+Authorization: Basic {{basicauth}}
+
+Content-Type: application/json
+Accept: application/octet-stream
+
+{
+    "startDate": "2023-01-01",
+    "endDate": "2023-12-31",
+    "type": "E-Rezept",
+    "includeProcessed": true
+}
+
+###
+# Pharmacy Operations (Apotheken)
+###
+
+### Get All Pharmacies (with pagination)
+GET {{baseUrl}}/v2/apotheken?page=1&pageSize=100
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Search Pharmacies by Name
+GET {{baseUrl}}/v2/apotheken?search=apo&page=1&pageSize=50
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Get Pharmacy by ID
+GET {{baseUrl}}/v2/apotheken/123
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Get Pharmacy by IK Number
+GET {{baseUrl}}/v2/apotheken/by-ik/987654321
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Create New Pharmacy
+POST {{baseUrl}}/v2/apotheken
+Authorization: Basic {{basicauth}}
+
+Content-Type: application/json
+Accept: application/json
+
+{
+    "apothekeName": "Test Apotheke",
+    "apothekeNameZusatz": "Zusatz",
+    "apoIkNr": 123456789,
+    "inhaberVorname": "Max",
+    "inhaberNachname": "Mustermann",
+    "plz": 12345,
+    "ort": "Berlin",
+    "strasse": "Hauptstraﬂe 1",
+    "email": "test@example.com",
+    "telefon": "030-123456"
+}
+
+### Update Pharmacy
+PUT {{baseUrl}}/v2/apotheken/123
+Authorization: Basic {{basicauth}}
+
+Content-Type: application/json
+Accept: application/json
+
+{
+    "apothekeName": "Updated Apotheke",
+    "apoIkNr": 123456789,
+    "plz": 12345,
+    "ort": "Berlin",
+    "strasse": "Neue Straﬂe 2",
+    "email": "updated@example.com",
+    "telefon": "030-654321"
+}
+
+### Delete Pharmacy
+DELETE {{baseUrl}}/v2/apotheken/123
+Authorization: Basic {{basicauth}}
+
+
+### Batch Create Pharmacies
+POST {{baseUrl}}/v2/apotheken/batch
+Authorization: Basic {{basicauth}}
+
+Content-Type: application/json
+Accept: application/json
+
+{
+    "pharmacies": [
+        {
+            "apothekeName": "Batch Apotheke 1",
+            "apoIkNr": 111111111,
+            "plz": 10115,
+            "ort": "Berlin",
+            "strasse": "Batch Straﬂe 1"
+        },
+        {
+            "apothekeName": "Batch Apotheke 2",
+            "apoIkNr": 222222222,
+            "plz": 20095,
+            "ort": "Hamburg",
+            "strasse": "Batch Straﬂe 2"
+        }
+    ]
+}
+
+### Import Pharmacies from CSV
+POST {{baseUrl}}/v2/apotheken/import
+Authorization: Basic {{basicauth}}
+
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="apotheken.csv"
+Content-Type: text/csv
+
+ApothekeName,ApoIkNr,PLZ,Ort,Strasse
+"CSV Import Test 1",333333333,30159,"Hannover","Import Straﬂe 1"
+"CSV Import Test 2",444444444,40210,"D¸sseldorf","Import Straﬂe 2"
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+# User Management Operations
+###
+
+### Get Current User Profile
+GET {{baseUrl}}/v2/users/me
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Update User Profile
+PUT {{baseUrl}}/v2/users/me
+Authorization: Basic {{basicauth}}
+
+Content-Type: application/json
+Accept: application/json
+
+{
+    "firstName": "Test",
+    "lastName": "User",
+    "email": "user@example.com",
+    "phoneNumber": "123-456-789"
+}
+
+### Change Password
+POST {{baseUrl}}/v2/users/change-password
+Authorization: Basic {{basicauth}}
+
+Content-Type: application/json
+Accept: application/json
+
+{
+    "currentPassword": "123456",
+    "newPassword": "newPassword123",
+    "confirmPassword": "newPassword123"
+}
+
+### Admin - Get All Users
+GET {{baseUrl}}/v2/admin/users?page=1&pageSize=50
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Admin - Create User
+POST {{baseUrl}}/v2/admin/users
+Authorization: Basic {{basicauth}}
+
+Content-Type: application/json
+Accept: application/json
+
+{
+    "username": "new_user",
+    "password": "password123",
+    "firstName": "New",
+    "lastName": "User",
+    "email": "newuser@example.com",
+    "roles": ["User"]
+}
+
+### Admin - Update User
+PUT {{baseUrl}}/v2/admin/users/user_id
+Authorization: Basic {{basicauth}}
+
+Content-Type: application/json
+Accept: application/json
+
+{
+    "firstName": "Updated",
+    "lastName": "User",
+    "email": "updated@example.com",
+    "roles": ["User", "Admin"]
+}
+
+### Admin - Delete User
+DELETE {{baseUrl}}/v2/admin/users/user_id
+Authorization: Basic {{basicauth}}
+
+
+###
+# Tenant Management Operations
+###
+
+### Admin - Get All Tenants
+GET {{baseUrl}}/v2/admin/tenants
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Admin - Create New Tenant
+POST {{baseUrl}}/v2/admin/tenants
+Authorization: Basic {{basicauth}}
+
+Content-Type: application/json
+Accept: application/json
+
+{
+    "tenantId": "new_tenant",
+    "name": "New Tenant",
+    "connectionString": "Host=localhost;Port=5432;Database=new_tenant_db;Username=postgres;Password=postgres"
+}
+
+### Admin - Update Tenant
+PUT {{baseUrl}}/v2/admin/tenants/tenant_id
+Authorization: Basic {{basicauth}}
+
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name": "Updated Tenant Name",
+    "connectionString": "Host=localhost;Port=5432;Database=updated_tenant_db;Username=postgres;Password=postgres"
+}
+
+### Admin - Delete Tenant
+DELETE {{baseUrl}}/v2/admin/tenants/tenant_id
+Authorization: Basic {{basicauth}}
+
+
+###
+# System Operations
+###
+
+### Get System Status
+GET {{baseUrl}}/v2/system/status
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Get System Metrics
+GET {{baseUrl}}/v2/system/metrics
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Get API Usage Statistics
+GET {{baseUrl}}/v2/system/api-usage?days=30
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+###
+# Version 1 Endpoints (Legacy)
+###
+
+### Get New Prescriptions (v1)
+GET {{baseUrl}}/api/Prescriptions/new?page=1&pageSize=100
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Get All Pharmacies (v1)
+GET {{baseUrl}}/api/Apotheken?page=1&pageSize=100
+Authorization: Basic {{basicauth}}
+
+Accept: application/json
+
+### Create Pharmacy (v1)
+POST {{baseUrl}}/api/Apotheken
+Authorization: Basic {{basicauth}}
+
+Content-Type: application/json
+Accept: application/json
+
+{
+    "apothekeName": "Legacy Test Apotheke",
+    "apoIkNr": 555555555,
+    "plz": "50667",
+    "ort": "Kˆln",
+    "strasse": "Legacy Straﬂe 1"
+}
+
+### Mark Prescription as Read (v1)
+POST {{baseUrl}}/api/Prescriptions/markAsRead
+Authorization: Basic {{basicauth}}
+
+Content-Type: application/json
+Accept: application/json
+
+{
+    "prescriptionId": 12345
+}
+
+### Set Prescription as Billed (v1)
+POST {{baseUrl}}/api/Prescriptions/setAbgerechnet
+Authorization: Basic {{basicauth}}
+
+Content-Type: application/json
+Accept: application/json
+
+{
+    "prescriptionId": 12345
+}

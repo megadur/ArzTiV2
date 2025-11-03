@@ -1,0 +1,66 @@
+@ArzTi3_HostAddress = http://localhost:5017
+
+GET {{ArzTi3_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+# Get all new prescriptions
+GET {{ArzTi3_HostAddress}}/api/Prescriptions/new?page=1&pageSize=1
+Accept: text/plain
+Authorization: Basic YXBvdGlfdXNlcl9yenN0ZWluOjEyMzQ1Ng==
+
+###
+
+# Get only eMuster16 prescriptions
+GET {{ArzTi3_HostAddress}}/api/Prescriptions/new?page=1&pageSize=10&rezeptType=eMuster16
+Accept: text/plain
+Authorization: Basic YXBvdGlfdXNlcl9yenN0ZWluOjEyMzQ1Ng==
+
+###
+
+# Get only eRezept prescriptions
+GET {{ArzTi3_HostAddress}}/api/Prescriptions/new?page=1&pageSize=10&rezeptType=eRezept
+Accept: text/plain
+Authorization: Basic YXBvdGlfdXNlcl9yenN0ZWluOjEyMzQ1Ng==
+
+###
+
+# Get only pRezept prescriptions
+GET {{ArzTi3_HostAddress}}/api/Prescriptions/new?page=1&pageSize=10&rezeptType=pRezept
+Accept: text/plain
+Authorization: Basic YXBvdGlfdXNlcl9yenN0ZWluOjEyMzQ1Ng==
+
+###
+
+POST {{ArzTi3_HostAddress}}/api/Prescriptions/set-abgerechnet
+Accept: text/plain
+Authorization: Basic YXBvdGlfdXNlcl9yenN0ZWluOjEyMzQ1Ng==
+Content-Type: application/json
+
+{
+  "prescriptions": [
+    {
+      "type": "E-Rezept",
+      "rezeptUuid": "1a16033d-3e5a-488b-8f2c-cd5a02b5bf30"
+    }
+  ]
+}
+
+###
+
+POST {{ArzTi3_HostAddress}}/api/Prescriptions/mark-as-read
+Accept: text/plain
+Authorization: Basic YXBvdGlfdXNlcl9yenN0ZWluOjEyMzQ1Ng==
+Content-Type: application/json
+
+{
+  "prescriptions": [
+    {
+      "type": "eRezept",
+      "rezeptUuid": "1a16033d-3e5a-488b-8f2c-cd5a02b5bf30"
+    }
+  ]
+}
+
+###

@@ -1,0 +1,864 @@
+openapi: 3.0.1
+info:
+  description: API for ARZ prescription insurance mediation system
+  title: ArzTi3 Prescription Mediation API
+  version: v1
+servers:
+- url: /
+security:
+- basic: []
+paths:
+  /api/Apotheken:
+    get:
+      parameters:
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ApothekeResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApothekeResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ApothekeResponse'
+          description: OK
+      tags:
+      - Apotheken
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateApothekeRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateApothekeRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CreateApothekeRequest'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ApothekeDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApothekeDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ApothekeDto'
+          description: OK
+      tags:
+      - Apotheken
+  /api/Apotheken/{id}:
+    delete:
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: OK
+      tags:
+      - Apotheken
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ApothekeDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApothekeDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ApothekeDto'
+          description: OK
+      tags:
+      - Apotheken
+    put:
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateApothekeRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateApothekeRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateApothekeRequest'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ApothekeDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApothekeDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ApothekeDto'
+          description: OK
+      tags:
+      - Apotheken
+  /api/Apotheken/by-ik/{ikNr}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: ikNr
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ApothekeDto'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApothekeDto'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ApothekeDto'
+          description: OK
+      tags:
+      - Apotheken
+  /api/Prescriptions/new:
+    get:
+      parameters:
+      - explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 100
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: rezeptType
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PrescriptionResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PrescriptionResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PrescriptionResponse'
+          description: OK
+      tags:
+      - Prescriptions
+  /api/Prescriptions/mark-as-read:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkOperationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/BulkOperationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/BulkOperationRequest'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BulkOperationResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationResponse'
+          description: OK
+      tags:
+      - Prescriptions
+  /api/Prescriptions/set-abgerechnet:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkOperationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/BulkOperationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/BulkOperationRequest'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BulkOperationResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BulkOperationResponse'
+          description: OK
+      tags:
+      - Prescriptions
+components:
+  schemas:
+    ApothekeDto:
+      additionalProperties: false
+      example:
+        filialapotheke: 9
+        apothekeNameZusatz: apothekeNameZusatz
+        apothekeName: apothekeName
+        inhaberVorname: inhaberVorname
+        idHauptapotheke: 2
+        aenDatum: 2000-01-23
+        secLoginWerte: secLoginWerte
+        aenZeit: aenZeit
+        mobil: mobil
+        telefon: telefon
+        bundesland: bundesland
+        secLogin: 3
+        idApotheke: 0
+        secLoginNurApoUser: true
+        aenIdSecUser: 2
+        apoIkNr: 6
+        fax: fax
+        email: email
+        strasse: strasse
+        gesperrt: true
+        ort: ort
+        bemerkung: bemerkung
+        idHtAnrede: 7
+        mandantType: mandantType
+        idLeType: 5
+        inhaberNachname: inhaberNachname
+        apoIntNr: 1
+        plz: 5
+      properties:
+        idApotheke:
+          format: int32
+          type: integer
+        apothekeName:
+          nullable: true
+          type: string
+        apothekeNameZusatz:
+          nullable: true
+          type: string
+        apoIkNr:
+          format: int64
+          type: integer
+        inhaberVorname:
+          nullable: true
+          type: string
+        inhaberNachname:
+          nullable: true
+          type: string
+        apoIntNr:
+          format: int32
+          nullable: true
+          type: integer
+        plz:
+          format: int32
+          nullable: true
+          type: integer
+        ort:
+          nullable: true
+          type: string
+        strasse:
+          nullable: true
+          type: string
+        email:
+          nullable: true
+          type: string
+        telefon:
+          nullable: true
+          type: string
+        mobil:
+          nullable: true
+          type: string
+        fax:
+          nullable: true
+          type: string
+        bemerkung:
+          nullable: true
+          type: string
+        bundesland:
+          nullable: true
+          type: string
+        mandantType:
+          nullable: true
+          type: string
+        idLeType:
+          format: int32
+          nullable: true
+          type: integer
+        idHauptapotheke:
+          format: int64
+          nullable: true
+          type: integer
+        idHtAnrede:
+          format: int32
+          nullable: true
+          type: integer
+        filialapotheke:
+          format: int32
+          nullable: true
+          type: integer
+        gesperrt:
+          nullable: true
+          type: boolean
+        secLogin:
+          format: int32
+          nullable: true
+          type: integer
+        secLoginWerte:
+          nullable: true
+          type: string
+        secLoginNurApoUser:
+          nullable: true
+          type: boolean
+        aenIdSecUser:
+          format: int32
+          nullable: true
+          type: integer
+        aenDatum:
+          format: date
+          nullable: true
+          type: string
+        aenZeit:
+          format: time
+          nullable: true
+          type: string
+      required:
+      - apothekeName
+      type: object
+    ApothekeResponse:
+      additionalProperties: false
+      example:
+        apotheken:
+        - filialapotheke: 9
+          apothekeNameZusatz: apothekeNameZusatz
+          apothekeName: apothekeName
+          inhaberVorname: inhaberVorname
+          idHauptapotheke: 2
+          aenDatum: 2000-01-23
+          secLoginWerte: secLoginWerte
+          aenZeit: aenZeit
+          mobil: mobil
+          telefon: telefon
+          bundesland: bundesland
+          secLogin: 3
+          idApotheke: 0
+          secLoginNurApoUser: true
+          aenIdSecUser: 2
+          apoIkNr: 6
+          fax: fax
+          email: email
+          strasse: strasse
+          gesperrt: true
+          ort: ort
+          bemerkung: bemerkung
+          idHtAnrede: 7
+          mandantType: mandantType
+          idLeType: 5
+          inhaberNachname: inhaberNachname
+          apoIntNr: 1
+          plz: 5
+        - filialapotheke: 9
+          apothekeNameZusatz: apothekeNameZusatz
+          apothekeName: apothekeName
+          inhaberVorname: inhaberVorname
+          idHauptapotheke: 2
+          aenDatum: 2000-01-23
+          secLoginWerte: secLoginWerte
+          aenZeit: aenZeit
+          mobil: mobil
+          telefon: telefon
+          bundesland: bundesland
+          secLogin: 3
+          idApotheke: 0
+          secLoginNurApoUser: true
+          aenIdSecUser: 2
+          apoIkNr: 6
+          fax: fax
+          email: email
+          strasse: strasse
+          gesperrt: true
+          ort: ort
+          bemerkung: bemerkung
+          idHtAnrede: 7
+          mandantType: mandantType
+          idLeType: 5
+          inhaberNachname: inhaberNachname
+          apoIntNr: 1
+          plz: 5
+        hasNextPage: true
+        pageSize: 1
+        page: 7
+        totalCount: 4
+      properties:
+        apotheken:
+          items:
+            $ref: '#/components/schemas/ApothekeDto'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+        page:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        hasNextPage:
+          type: boolean
+      required:
+      - apotheken
+      type: object
+    BulkOperationRequest:
+      additionalProperties: false
+      example:
+        prescriptions:
+        - type: type
+          rezeptUuid: rezeptUuid
+        - type: type
+          rezeptUuid: rezeptUuid
+      properties:
+        prescriptions:
+          items:
+            $ref: '#/components/schemas/PrescriptionIdentifier'
+          nullable: true
+          type: array
+      type: object
+    BulkOperationResponse:
+      additionalProperties: false
+      example:
+        processedCount: 0
+        success: true
+        errors:
+        - errors
+        - errors
+      properties:
+        success:
+          type: boolean
+        processedCount:
+          format: int32
+          type: integer
+        errors:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
+    CreateApothekeRequest:
+      additionalProperties: false
+      example:
+        filialapotheke: 7
+        apothekeNameZusatz: apothekeNameZusatz
+        apothekeName: apothekeName
+        inhaberVorname: inhaberVorname
+        strasse: strasse
+        idHauptapotheke: 5
+        secLoginWerte: secLoginWerte
+        gesperrt: true
+        ort: ort
+        mobil: mobil
+        telefon: telefon
+        bundesland: bundesland
+        secLogin: 9
+        bemerkung: bemerkung
+        idHtAnrede: 2
+        mandantType: mandantType
+        secLoginNurApoUser: true
+        apoIkNr: 0
+        fax: fax
+        idLeType: 5
+        inhaberNachname: inhaberNachname
+        apoIntNr: 6
+        email: email
+        plz: 1
+      properties:
+        apothekeName:
+          nullable: true
+          type: string
+        apothekeNameZusatz:
+          nullable: true
+          type: string
+        apoIkNr:
+          format: int64
+          type: integer
+        inhaberVorname:
+          nullable: true
+          type: string
+        inhaberNachname:
+          nullable: true
+          type: string
+        apoIntNr:
+          format: int32
+          nullable: true
+          type: integer
+        plz:
+          format: int32
+          nullable: true
+          type: integer
+        ort:
+          nullable: true
+          type: string
+        strasse:
+          nullable: true
+          type: string
+        email:
+          nullable: true
+          type: string
+        telefon:
+          nullable: true
+          type: string
+        mobil:
+          nullable: true
+          type: string
+        fax:
+          nullable: true
+          type: string
+        bemerkung:
+          nullable: true
+          type: string
+        bundesland:
+          nullable: true
+          type: string
+        mandantType:
+          nullable: true
+          type: string
+        idLeType:
+          format: int32
+          nullable: true
+          type: integer
+        idHauptapotheke:
+          format: int64
+          nullable: true
+          type: integer
+        idHtAnrede:
+          format: int32
+          nullable: true
+          type: integer
+        filialapotheke:
+          format: int32
+          nullable: true
+          type: integer
+        gesperrt:
+          nullable: true
+          type: boolean
+        secLogin:
+          format: int32
+          nullable: true
+          type: integer
+        secLoginWerte:
+          nullable: true
+          type: string
+        secLoginNurApoUser:
+          nullable: true
+          type: boolean
+      required:
+      - apothekeName
+      type: object
+    PrescriptionDto:
+      additionalProperties: false
+      example:
+        rzLieferId: rzLieferId
+        muster16Id: 6
+        transaktionsNummer: 1
+        id: 0
+        type: type
+        erezeptId: erezeptId
+        datenId: 5
+        transferArz: true
+        xmlRequest: xmlRequest
+        rezeptUuid: rezeptUuid
+      properties:
+        type:
+          nullable: true
+          type: string
+        id:
+          format: int32
+          type: integer
+        rezeptUuid:
+          nullable: true
+          type: string
+        xmlRequest:
+          nullable: true
+          type: string
+        transferArz:
+          type: boolean
+        rzLieferId:
+          nullable: true
+          type: string
+        muster16Id:
+          format: int64
+          nullable: true
+          type: integer
+        transaktionsNummer:
+          format: int64
+          nullable: true
+          type: integer
+        erezeptId:
+          nullable: true
+          type: string
+        datenId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    PrescriptionIdentifier:
+      additionalProperties: false
+      example:
+        type: type
+        rezeptUuid: rezeptUuid
+      properties:
+        type:
+          nullable: true
+          type: string
+        rezeptUuid:
+          nullable: true
+          type: string
+      type: object
+    PrescriptionResponse:
+      additionalProperties: false
+      example:
+        hasNextPage: true
+        pageSize: 7
+        page: 2
+        totalCount: 5
+        prescriptions:
+        - rzLieferId: rzLieferId
+          muster16Id: 6
+          transaktionsNummer: 1
+          id: 0
+          type: type
+          erezeptId: erezeptId
+          datenId: 5
+          transferArz: true
+          xmlRequest: xmlRequest
+          rezeptUuid: rezeptUuid
+        - rzLieferId: rzLieferId
+          muster16Id: 6
+          transaktionsNummer: 1
+          id: 0
+          type: type
+          erezeptId: erezeptId
+          datenId: 5
+          transferArz: true
+          xmlRequest: xmlRequest
+          rezeptUuid: rezeptUuid
+      properties:
+        prescriptions:
+          items:
+            $ref: '#/components/schemas/PrescriptionDto'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+        page:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        hasNextPage:
+          type: boolean
+      type: object
+    UpdateApothekeRequest:
+      additionalProperties: false
+      example:
+        filialapotheke: 7
+        apothekeNameZusatz: apothekeNameZusatz
+        apothekeName: apothekeName
+        inhaberVorname: inhaberVorname
+        strasse: strasse
+        idHauptapotheke: 5
+        secLoginWerte: secLoginWerte
+        gesperrt: true
+        ort: ort
+        mobil: mobil
+        telefon: telefon
+        bundesland: bundesland
+        secLogin: 9
+        bemerkung: bemerkung
+        idHtAnrede: 2
+        mandantType: mandantType
+        secLoginNurApoUser: true
+        apoIkNr: 0
+        fax: fax
+        idLeType: 5
+        inhaberNachname: inhaberNachname
+        apoIntNr: 6
+        email: email
+        plz: 1
+      properties:
+        apothekeName:
+          nullable: true
+          type: string
+        apothekeNameZusatz:
+          nullable: true
+          type: string
+        apoIkNr:
+          format: int64
+          type: integer
+        inhaberVorname:
+          nullable: true
+          type: string
+        inhaberNachname:
+          nullable: true
+          type: string
+        apoIntNr:
+          format: int32
+          nullable: true
+          type: integer
+        plz:
+          format: int32
+          nullable: true
+          type: integer
+        ort:
+          nullable: true
+          type: string
+        strasse:
+          nullable: true
+          type: string
+        email:
+          nullable: true
+          type: string
+        telefon:
+          nullable: true
+          type: string
+        mobil:
+          nullable: true
+          type: string
+        fax:
+          nullable: true
+          type: string
+        bemerkung:
+          nullable: true
+          type: string
+        bundesland:
+          nullable: true
+          type: string
+        mandantType:
+          nullable: true
+          type: string
+        idLeType:
+          format: int32
+          nullable: true
+          type: integer
+        idHauptapotheke:
+          format: int64
+          nullable: true
+          type: integer
+        idHtAnrede:
+          format: int32
+          nullable: true
+          type: integer
+        filialapotheke:
+          format: int32
+          nullable: true
+          type: integer
+        gesperrt:
+          nullable: true
+          type: boolean
+        secLogin:
+          format: int32
+          nullable: true
+          type: integer
+        secLoginWerte:
+          nullable: true
+          type: string
+        secLoginNurApoUser:
+          nullable: true
+          type: boolean
+      required:
+      - apothekeName
+      type: object
+  securitySchemes:
+    basic:
+      description: Basic Authorization header using the Bearer scheme.
+      scheme: basic
+      type: http
+

@@ -1,0 +1,15 @@
+C:\data\code\comp\GfAL\ArzTi3\ArzTiServer.Domain\bin\Debug\net6.0\ArzTiServer.Domain.deps.json
+C:\data\code\comp\GfAL\ArzTi3\ArzTiServer.Domain\bin\Debug\net6.0\ArzTiServer.Domain.runtimeconfig.json
+C:\data\code\comp\GfAL\ArzTi3\ArzTiServer.Domain\bin\Debug\net6.0\ArzTiServer.Domain.dll
+C:\data\code\comp\GfAL\ArzTi3\ArzTiServer.Domain\bin\Debug\net6.0\ArzTiServer.Domain.pdb
+C:\data\code\comp\GfAL\ArzTi3\ArzTiServer.Domain\obj\Debug\net6.0\ArzTiServer.Domain.csproj.AssemblyReference.cache
+C:\data\code\comp\GfAL\ArzTi3\ArzTiServer.Domain\obj\Debug\net6.0\ArzTiServer.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\data\code\comp\GfAL\ArzTi3\ArzTiServer.Domain\obj\Debug\net6.0\ArzTiServer.Domain.AssemblyInfoInputs.cache
+C:\data\code\comp\GfAL\ArzTi3\ArzTiServer.Domain\obj\Debug\net6.0\ArzTiServer.Domain.AssemblyInfo.cs
+C:\data\code\comp\GfAL\ArzTi3\ArzTiServer.Domain\obj\Debug\net6.0\ArzTiServer.Domain.csproj.CoreCompileInputs.cache
+C:\data\code\comp\GfAL\ArzTi3\ArzTiServer.Domain\obj\Debug\net6.0\ArzTiServer.Domain.sourcelink.json
+C:\data\code\comp\GfAL\ArzTi3\ArzTiServer.Domain\obj\Debug\net6.0\ArzTiServer.Domain.dll
+C:\data\code\comp\GfAL\ArzTi3\ArzTiServer.Domain\obj\Debug\net6.0\refint\ArzTiServer.Domain.dll
+C:\data\code\comp\GfAL\ArzTi3\ArzTiServer.Domain\obj\Debug\net6.0\ArzTiServer.Domain.pdb
+C:\data\code\comp\GfAL\ArzTi3\ArzTiServer.Domain\obj\Debug\net6.0\ArzTiServer.Domain.genruntimeconfig.cache
+C:\data\code\comp\GfAL\ArzTi3\ArzTiServer.Domain\obj\Debug\net6.0\ref\ArzTiServer.Domain.dll

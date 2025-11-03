@@ -1,0 +1,1223 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "ARZ_TI 2.0 API",
+    "description": "High-performance ARZ prescription mediation API with enhanced features and bulk operations",
+    "version": "v2"
+  },
+  "paths": {
+    "/api/Apotheken": {
+      "get": {
+        "tags": [
+          "Apotheken"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-API-Version",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApothekeResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApothekeResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApothekeResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Apotheken"
+        ],
+        "parameters": [
+          {
+            "name": "X-API-Version",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateApothekeRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateApothekeRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateApothekeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApothekeDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApothekeDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApothekeDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Apotheken/{id}": {
+      "get": {
+        "tags": [
+          "Apotheken"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-API-Version",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApothekeDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApothekeDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApothekeDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Apotheken"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-API-Version",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateApothekeRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateApothekeRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateApothekeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApothekeDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApothekeDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApothekeDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Apotheken"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "X-API-Version",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Apotheken/by-ik/{ikNr}": {
+      "get": {
+        "tags": [
+          "Apotheken"
+        ],
+        "parameters": [
+          {
+            "name": "ikNr",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "X-API-Version",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApothekeDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApothekeDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApothekeDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Health/arzsw": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "parameters": [
+          {
+            "name": "X-API-Version",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/v2/rezept": {
+      "get": {
+        "tags": [
+          "PrescriptionsV"
+        ],
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrescriptionV2Response"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrescriptionV2Response"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrescriptionV2Response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/rezept/status": {
+      "get": {
+        "tags": [
+          "PrescriptionsV"
+        ],
+        "parameters": [
+          {
+            "name": "pharmacyId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 100
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrescriptionV2Response"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrescriptionV2Response"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrescriptionV2Response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "PrescriptionsV"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkUpdateRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkUpdateRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkUpdateResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkUpdateResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkUpdateResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/rezept/statusuuid": {
+      "patch": {
+        "tags": [
+          "PrescriptionsV"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkStatusRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkStatusRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkStatusRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkStatusResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkStatusResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkStatusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApothekeDto": {
+        "type": "object",
+        "properties": {
+          "idApotheke": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "apothekeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "apothekeNameZusatz": {
+            "type": "string",
+            "nullable": true
+          },
+          "apoIkNr": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "inhaberVorname": {
+            "type": "string",
+            "nullable": true
+          },
+          "inhaberNachname": {
+            "type": "string",
+            "nullable": true
+          },
+          "apoIntNr": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "plz": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ort": {
+            "type": "string",
+            "nullable": true
+          },
+          "strasse": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefon": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobil": {
+            "type": "string",
+            "nullable": true
+          },
+          "fax": {
+            "type": "string",
+            "nullable": true
+          },
+          "bemerkung": {
+            "type": "string",
+            "nullable": true
+          },
+          "bundesland": {
+            "type": "string",
+            "nullable": true
+          },
+          "mandantType": {
+            "type": "string",
+            "nullable": true
+          },
+          "idLeType": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idHauptapotheke": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "idHtAnrede": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "filialapotheke": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "gesperrt": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "secLogin": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "secLoginWerte": {
+            "type": "string",
+            "nullable": true
+          },
+          "secLoginNurApoUser": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "aenIdSecUser": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "aenDatum": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "aenZeit": {
+            "type": "string",
+            "format": "time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApothekeResponse": {
+        "type": "object",
+        "properties": {
+          "apotheken": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ApothekeDto"
+            },
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasNextPage": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AvsSystemDto": {
+        "type": "object",
+        "properties": {
+          "manufacturer": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "version": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BulkStatusRequest": {
+        "type": "object",
+        "properties": {
+          "rezeptUuids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BulkStatusResponse": {
+        "type": "object",
+        "properties": {
+          "prescriptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrescriptionStatusDto"
+            },
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "successCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "errorCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "globalErrors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "responseTimestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BulkUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "updates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrescriptionUpdateDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BulkUpdateResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "processedCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "successCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "errorCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "responseTimestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateApothekeRequest": {
+        "type": "object",
+        "properties": {
+          "apothekeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "apothekeNameZusatz": {
+            "type": "string",
+            "nullable": true
+          },
+          "apoIkNr": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "inhaberVorname": {
+            "type": "string",
+            "nullable": true
+          },
+          "inhaberNachname": {
+            "type": "string",
+            "nullable": true
+          },
+          "apoIntNr": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "plz": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ort": {
+            "type": "string",
+            "nullable": true
+          },
+          "strasse": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefon": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobil": {
+            "type": "string",
+            "nullable": true
+          },
+          "fax": {
+            "type": "string",
+            "nullable": true
+          },
+          "bemerkung": {
+            "type": "string",
+            "nullable": true
+          },
+          "bundesland": {
+            "type": "string",
+            "nullable": true
+          },
+          "mandantType": {
+            "type": "string",
+            "nullable": true
+          },
+          "idLeType": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idHauptapotheke": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "idHtAnrede": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "filialapotheke": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "gesperrt": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "secLogin": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "secLoginWerte": {
+            "type": "string",
+            "nullable": true
+          },
+          "secLoginNurApoUser": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PrescriptionStatusDto": {
+        "type": "object",
+        "properties": {
+          "rezeptUuid": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "transferArz": {
+            "type": "boolean"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "regelTrefferCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkLevel": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PrescriptionUpdateDto": {
+        "type": "object",
+        "properties": {
+          "rezeptUuid": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "transferArz": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PrescriptionV2Dto": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rezeptUuid": {
+            "type": "string",
+            "nullable": true
+          },
+          "xmlRequest": {
+            "type": "string",
+            "nullable": true
+          },
+          "transferArz": {
+            "type": "boolean"
+          },
+          "rzLieferId": {
+            "type": "string",
+            "nullable": true
+          },
+          "muster16Id": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "transaktionsNummer": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "erezeptId": {
+            "type": "string",
+            "nullable": true
+          },
+          "datenId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "regelTrefferCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "checkLevel": {
+            "type": "string",
+            "nullable": true
+          },
+          "statusAbfrageDatum": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "statusAbfrageZeit": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "deliveryTimestamp": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "avsSystem": {
+            "$ref": "#/components/schemas/AvsSystemDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PrescriptionV2Response": {
+        "type": "object",
+        "properties": {
+          "prescriptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrescriptionV2Dto"
+            },
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hasNextPage": {
+            "type": "boolean"
+          },
+          "environment": {
+            "type": "string",
+            "nullable": true
+          },
+          "responseTimestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateApothekeRequest": {
+        "type": "object",
+        "properties": {
+          "apothekeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "apothekeNameZusatz": {
+            "type": "string",
+            "nullable": true
+          },
+          "apoIkNr": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "inhaberVorname": {
+            "type": "string",
+            "nullable": true
+          },
+          "inhaberNachname": {
+            "type": "string",
+            "nullable": true
+          },
+          "apoIntNr": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "plz": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ort": {
+            "type": "string",
+            "nullable": true
+          },
+          "strasse": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefon": {
+            "type": "string",
+            "nullable": true
+          },
+          "mobil": {
+            "type": "string",
+            "nullable": true
+          },
+          "fax": {
+            "type": "string",
+            "nullable": true
+          },
+          "bemerkung": {
+            "type": "string",
+            "nullable": true
+          },
+          "bundesland": {
+            "type": "string",
+            "nullable": true
+          },
+          "mandantType": {
+            "type": "string",
+            "nullable": true
+          },
+          "idLeType": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "idHauptapotheke": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "idHtAnrede": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "filialapotheke": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "gesperrt": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "secLogin": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "secLoginWerte": {
+            "type": "string",
+            "nullable": true
+          },
+          "secLoginNurApoUser": {
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "basic": {
+        "type": "http",
+        "description": "Basic Authorization header using the Bearer scheme.",
+        "scheme": "basic"
+      }
+    }
+  },
+  "security": [
+    {
+      "basic": [ ]
+    }
+  ]
+}
