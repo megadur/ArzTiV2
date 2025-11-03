@@ -37,8 +37,8 @@ story_location: "{project-root}/docs/stories"
 
 development_status:
   # Epic 1: Grundlagen & Kern-Infrastruktur
-  epic-1: backlog
-  1-1-projektaufbau-und-basis-authentifizierung: backlog
+  epic-1: contexted
+  1-1-projektaufbau-und-basis-authentifizierung: drafted
   1-2-mandantenfaehigkeit-und-verbindungsmanagement: backlog
   1-3-basic-prescription-retrieval-api: backlog
   1-4-openapi-documentation-and-basic-monitoring: backlog
