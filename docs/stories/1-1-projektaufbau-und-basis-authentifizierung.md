@@ -56,6 +56,7 @@ Als ARZ-Systementwickler möchte ich sicheren API-Zugang mit Basis-Authentifizie
 ## Dev Notes
 
 **Authentication Implementation Strategy:**
+
 - Enhance existing `BasicAuthenticationHandler.cs` in `Authentication/` directory
 - Use BCrypt.Net-Next for password verification against ArzSw database
 - Implement credential validation with proper error handling and logging

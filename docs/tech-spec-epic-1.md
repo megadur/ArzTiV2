@@ -14,6 +14,7 @@ Epic 1 establishes the foundational infrastructure for the ARZ_TI 3 brownfield e
 ## Objectives and Scope
 
 **In Scope:**
+
 - .NET 8.0 Web API project structure with proper solution organization
 - Basic Authentication against existing ArzSw database for ARZ system credentials
 - Multitenant connection management with dynamic DbContext creation
@@ -22,6 +23,7 @@ Epic 1 establishes the foundational infrastructure for the ARZ_TI 3 brownfield e
 - Integration with existing PostgreSQL schemas without structural changes
 
 **Out of Scope:**
+
 - Advanced performance optimizations (covered in Epic 4)
 - Complex prescription management operations (covered in Epics 2-3)
 - Full monitoring and alerting infrastructure (basic health checks only)
@@ -48,6 +50,7 @@ This epic aligns with the brownfield enhancement strategy by building upon exist
 ### Data Models and Contracts
 
 **Core Prescription Entity (Existing Schema):**
+
 ```csharp
 public class Prescription
 {
@@ -62,6 +65,7 @@ public class Prescription
 ```
 
 **API Response Contract:**
+
 ```csharp
 public class PrescriptionResponse
 {
@@ -78,6 +82,7 @@ public class PrescriptionResponse
 ### APIs and Interfaces
 
 **Primary API Endpoint:**
+
 ```http
 GET /v2/rezept
 Authorization: Basic {base64-encoded-credentials}
@@ -91,6 +96,7 @@ Query Parameters:
 ```
 
 **Service Interfaces:**
+
 ```csharp
 public interface ITenantConnectionResolver
 {
@@ -216,7 +222,8 @@ public interface ITenantService
 
 ## Acceptance Criteria (Authoritative)
 
-**Story 1.1: Project Setup and Basic Authentication**
+### Story 1.1: Project Setup and Basic Authentication
+
 1. .NET 8.0 Web API project with proper solution structure created
 2. Basic Authentication middleware implemented and configured
 3. Authentication handler validates credentials against ARZ system database
