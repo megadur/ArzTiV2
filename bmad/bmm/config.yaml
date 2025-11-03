@@ -12,6 +12,6 @@ tea_use_mcp_enhancements: false
 
 # Core Configuration Values
 user_name: Megadur
-communication_language: german
+communication_language: english
 document_output_language: german
 output_folder: '{project-root}/docs'

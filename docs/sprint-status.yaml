@@ -1,0 +1,69 @@
+# generated: 2025-11-03
+# project: ArzTiV2
+# project_key: ArzTiV2
+# tracking_system: file-system
+# story_location: {project-root}/docs/stories
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic exists in epic file but not contexted
+#   - contexted: Epic tech context created (required before drafting stories)
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - drafted: Story file created in stories folder
+#   - ready-for-dev: Draft approved and story context created
+#   - in-progress: Developer actively working on implementation
+#   - review: Under SM review (via code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - completed: Retrospective has been done
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epics should be 'contexted' before stories can be 'drafted'
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically drafts next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', SM reviews, then Dev moves to 'done'
+
+generated: 2025-11-03
+project: ArzTiV2
+project_key: ArzTiV2
+tracking_system: file-system
+story_location: "{project-root}/docs/stories"
+
+development_status:
+  # Epic 1: Grundlagen & Kern-Infrastruktur
+  epic-1: backlog
+  1-1-projektaufbau-und-basis-authentifizierung: backlog
+  1-2-mandantenfaehigkeit-und-verbindungsmanagement: backlog
+  1-3-basic-prescription-retrieval-api: backlog
+  1-4-openapi-documentation-and-basic-monitoring: backlog
+  epic-1-retrospective: optional
+
+  # Epic 2: Core Business Operations  
+  epic-2: backlog
+  2-1-pharmacy-specific-prescription-status-retrieval: backlog
+  2-2-individual-prescription-status-updates: backlog
+  2-3-bulk-status-retrieval-by-uuid: backlog
+  2-4-bulk-status-update-to-billed: backlog
+  epic-2-retrospective: optional
+
+  # Epic 3: Advanced Features & Pharmacy Management
+  epic-3: backlog
+  3-1-enhanced-status-attributes-and-error-tracking: backlog
+  3-2-additional-prescription-attributes: backlog
+  3-3-e-rezept-uuid-modification-for-versioning: backlog
+  3-4-pharmacy-management-api: backlog
+  epic-3-retrospective: optional
+
+  # Epic 4: Performance Optimization & Production Readiness
+  epic-4: backlog
+  4-1-database-performance-optimization: backlog
+  4-2-production-monitoring-and-caching: backlog
+  4-3-comprehensive-testing-suite: backlog
+  4-4-production-documentation-and-deployment: backlog
+  epic-4-retrospective: optional

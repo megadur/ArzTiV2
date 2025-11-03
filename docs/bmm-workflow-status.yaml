@@ -40,11 +40,11 @@ workflow_status:
   create-design: conditional
 
   # Phase 3: Solutioning
-  architecture-review: required
-  integration-planning: required
+  architecture-review: skipped
+  integration-planning: docs/architecture/enhancement-scope-and-integration-strategy.md
   create-architecture: docs/architecture/
   validate-architecture: optional
-  solutioning-gate-check: required
+  solutioning-gate-check: docs/implementation-readiness-report-2025-11-03.md
 
   # Phase 4: Implementation (tracked separately in sprint-status.yaml)
-  sprint-planning: required
+  sprint-planning: docs/sprint-status.yaml
