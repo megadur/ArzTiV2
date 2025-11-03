@@ -8,7 +8,17 @@
 **Status:** ✅ Architektur vollständig, bereit für Entwicklung  
 **Geschäftlicher Impact:** 90% Performance-Verbesserung (5-10s → <1s Antwortzeiten)  
 
-# ARZ_TI Version 2.0
+# Deutsche Dokumentation - ArzTiV2
+
+## Navigation
+
+- **[Epic 1 Zusammenfassung](epic-1-zusammenfassung.md)** - Deutsche Übersicht der Grundlagen-Infrastruktur
+- **[Epic Roadmap Prognose](epic-roadmap-prognose.md)** - Vollständige 12-16 Wochen Projektplanung
+- **[Projekt Brief](projekt-brief-neu.md)** - Ursprüngliche Projektanforderungen
+
+---
+
+## ARZ_TI Version 2.0
 
 ## Allgemeine und technische Vorbedingungen zur ARZ_TI Schnittstelle
 
