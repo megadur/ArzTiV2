@@ -6,23 +6,23 @@
 
 ---
 
-## ÌæØ Aktueller Projektstand
+## Aktueller Projektstand
 
-### **Phase 4: Implementierung - BEREIT** ‚úÖ
+### **Phase 4: Implementierung - BEREIT**
 
 **Epic 1: Grundlagen & Kern-Infrastruktur**
-- **Status:** Technische Spezifikation abgeschlossen ‚úÖ
-- **Story 1.1:** Projektaufbau und Basis-Authentifizierung - Entworfen ‚úÖ
-- **Entwicklungsbereitschaft:** Sofort verf√ºgbar Ì∫Ä
+- **Status:** Technische Spezifikation abgeschlossen
+- **Story 1.1:** Projektaufbau und Basis-Authentifizierung - Entworfen
+- **Entwicklungsbereitschaft:** Sofort verf√ºgbar
 
 **N√§chste Schritte:** Entwicklung Story 1.1 beginnen
 
 ### **Abgeschlossene Phasen:**
-- ‚úÖ **Phase 1:** Planung (BMM Methodology)
-- ‚úÖ **Phase 2:** Analyse (Anforderungen definiert)
-- ‚úÖ **Phase 3:** Architektur (Technische Spezifikation)
+- **Phase 1:** Planung (BMM Methodology)
+- **Phase 2:** Analyse (Anforderungen definiert)
+- **Phase 3:** Architektur (Technische Spezifikation)
 
-## Ì≥ä Projekt-√úbersicht
+## Projekt-√úbersicht
 
 ### **Technische Ziele**
 - **Performance-Verbesserung:** Unter 1 Sekunde Antwortzeit (aktuell 5-10 Sekunden)
@@ -36,7 +36,7 @@
 - **Risikoarme Implementierung** (bestehende Datenbank unver√§ndert)
 - **Schnelle ROI** durch Performance-Verbesserungen
 
-## ‚è±Ô∏è Zeitplan & Meilensteine
+## Zeitplan & Meilensteine
 
 ### **Epic 1: Grundlagen (2-3 Wochen)**
 - **Woche 1-2:** Projektaufbau, Authentifizierung, Mandantenf√§higkeit
@@ -50,19 +50,19 @@
 
 **Detaillierte Zeitplanung:** Siehe [Epic Roadmap Prognose](../summaries/epic-roadmap-prognose.md)
 
-## Ì¥ç Risiken & Mitigation
+## Risiken & Mitigation
 
-### **Niedrige Risiken** ‚úÖ
+### **Niedrige Risiken**
 - **Datenbank-Stabilit√§t:** Keine Schema-√Ñnderungen
 - **Technologie-Risiko:** Bew√§hrte .NET 8.0 LTS-Stack
 - **Integration:** Parallelbetrieb mit bestehenden Systemen
 
-### **√úberwachte Bereiche** ‚ö†Ô∏è
+### **√úberwachte Bereiche**
 - **Performance-Ziele:** Kontinuierliche Leistungstests
 - **Mandanten-Sicherheit:** Umfassende Sicherheitstests
 - **Ressourcen-Management:** Datenbankverbindungs-Pooling
 
-## Ì≤∞ Budget & Ressourcen
+## Budget & Ressourcen
 
 ### **Entwicklungsressourcen Epic 1**
 - **1 Entwickler** f√ºr 2-3 Wochen
@@ -76,7 +76,7 @@
 
 ---
 
-## Ì≥à Erfolgsmessung
+## Erfolgsmessung
 
 ### **Technische KPIs**
 - **Antwortzeit:** < 1 Sekunde (Ziel erreicht in Epic 4)

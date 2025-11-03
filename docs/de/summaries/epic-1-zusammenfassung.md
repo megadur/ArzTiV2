@@ -99,9 +99,9 @@ Das Epic umfasst **25 Akzeptanzkriterien** aufgeteilt auf 4 Stories:
 
 ## Status und nächste Schritte
 
-- ✅ **Epic-Kontext erstellt:** Technische Spezifikation vollständig
-- ✅ **Story 1.1 entworfen:** Bereit für Entwicklung
-- ��� **Nächster Schritt:** Story-Context-Generierung oder direkte Entwicklung
+- **Epic-Kontext erstellt:** Technische Spezifikation vollständig
+- **Story 1.1 entworfen:** Bereit für Entwicklung
+- **Nächster Schritt:** Story-Context-Generierung oder direkte Entwicklung
 
 ---
 

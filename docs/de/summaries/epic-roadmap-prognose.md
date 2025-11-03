@@ -16,13 +16,13 @@ Diese Prognose basiert auf der etablierten Epic 1-Grundlage und den bestehenden 
 | Epic | Titel | Komplexität | Geschätzte Dauer | Abhängigkeiten |
 |------|-------|-------------|------------------|----------------|
 | **Epic 1** | Grundlagen & Kern-Infrastruktur | Niedrig ✅ | 2-3 Wochen | Keine |
-| **Epic 2** | Core Business Operations | Mittel-Hoch ⚠️ | 3-4 Wochen | Epic 1 |
-| **Epic 3** | Advanced Features & Pharmacy Management | Mittel ⚠️ | 2-3 Wochen | Epic 1 & 2 |
-| **Epic 4** | Performance Optimization & Production Readiness | Hoch 🔥 | 4-6 Wochen | Alle Epics |
+| **Epic 2** | Core Business Operations | Mittel-Hoch | 3-4 Wochen | Epic 1 |
+| **Epic 3** | Advanced Features & Pharmacy Management | Mittel | 2-3 Wochen | Epic 1 & 2 |
+| **Epic 4** | Performance Optimization & Production Readiness | Hoch | 4-6 Wochen | Alle Epics |
 
 ---
 
-## Epic 2: Core Business Operations 🔥
+## Epic 2: Core Business Operations
 
 ### Strategischer Fokus
 **Hauptziel:** Umfassendes Rezeptstatus-Management mit Bulk-Operationen, detailliertem Fehler-Reporting und Status-Update-Funktionen implementieren.
@@ -59,14 +59,14 @@ Diese Prognose basiert auf der etablierten Epic 1-Grundlage und den bestehenden 
 - **Audit-Trail-Implementierung** für alle Statusänderungen
 - **Fehlerbehandlung** für partielle Erfolgsszenarien
 
-### Risikobewertung: ⚠️ MITTEL-HOCH
+### Risikobewertung: MITTEL-HOCH
 - **Transaktionsmanagement-Komplexität**
 - **Performance-Anforderungen für Bulk-Operationen**
 - **Konsistente Fehlerbehandlung über mehrere Endpunkte**
 
 ---
 
-## Epic 3: Advanced Features & Pharmacy Management 📋
+## Epic 3: Advanced Features & Pharmacy Management
 
 ### Strategischer Fokus
 **Hauptziel:** Erweiterte Rezeptattribute, Apothekenverwaltungsfunktionen und E-Rezept-Versionierung zur Vervollständigung des umfassenden Feature-Sets.
@@ -103,14 +103,14 @@ Diese Prognose basiert auf der etablierten Epic 1-Grundlage und den bestehenden 
 - **Komplexes Apothekenbeziehungsmanagement**
 - **Administrative Sicherheit** und Berechtigungen
 
-### Risikobewertung: ⚠️ MITTEL
+### Risikobewertung: MITTEL
 - **Datenintegritätskomplexität bei UUID-Versionierung**
 - **Rückwärtskompatibilitäts-Herausforderungen**
 - **Komplexe administrative Berechtigungsstrukturen**
 
 ---
 
-## Epic 4: Performance Optimization & Production Readiness 🚀
+## Epic 4: Performance Optimization & Production Readiness
 
 ### Strategischer Fokus
 **Hauptziel:** System für 1M+ Datensätze optimieren, umfassendes Monitoring implementieren und Produktionsbereitschaft mit vollständiger Testabdeckung und Dokumentation sicherstellen.
@@ -156,7 +156,7 @@ Diese Prognose basiert auf der etablierten Epic 1-Grundlage und den bestehenden 
 - **Umfassende Testautomatisierung**
 - **Komplexe Bereitstellungsverfahren** über Umgebungen hinweg
 
-### Risikobewertung: 🔥 HOCH
+### Risikobewertung: HOCH
 - **Performance-Ziele bei massiver Skalierung**
 - **Produktionsanforderungen und -komplexität**
 - **Umfassende Testabdeckung und -automatisierung**
@@ -188,22 +188,22 @@ Diese Prognose basiert auf der etablierten Epic 1-Grundlage und den bestehenden 
 
 ### Kritische Erfolgsfaktoren
 
-#### **1. Epic 1 Qualität** 🏗️
+#### **1. Epic 1 Qualität**
 - Setzt das Fundament für alles andere
 - Authentifizierung und API-Struktur müssen robust sein
 - Multitenant-Architektur muss skalierbar sein
 
-#### **2. Frühzeitige Performance-Tests** ⚡
+#### **2. Frühzeitige Performance-Tests**
 - Epic 4.1 Planung während Epic 2 beginnen
 - Datenbank-Design muss 1M+ Skalierung unterstützen
 - Connection Pooling früh testen
 
-#### **3. API-Stabilität** 🔒
+#### **3. API-Stabilität**
 - Rückwärtskompatibilität über alle Epics hinweg beibehalten
 - Versionierungsstrategie konsistent anwenden
 - Breaking Changes vermeiden
 
-#### **4. Datenbank-Design** 🗄️
+#### **4. Datenbank-Design**
 - Epic 1-2 Design muss 1M+ Skalierung unterstützen
 - Indexstrategie früh planen
 - Migration-Pfade vorbereiten
