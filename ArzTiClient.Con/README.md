@@ -1,6 +1,6 @@
-# ArzTiClient.Con - CLI for ArzTi3Server
+# ArzTiClient.Con - CLI for ArzTiV2Server
 
-This console application provides a command-line interface to interact with the ArzTi3Server using the ArzTiClient library.
+This console application provides a command-line interface to interact with the ArzTiV2Server using the ArzTiClient library.
 
 ## Configuration
 

@@ -99,12 +99,12 @@ public class HighPerformanceRezeptRepository
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: arzti3-greenfield-api
+  name: ArzTiV2-greenfield-api
 spec:
   replicas: 3
   containers:
   - name: api
-    image: arzti3-greenfield:latest
+    image: ArzTiV2-greenfield:latest
     resources:
       requests: { memory: "512Mi", cpu: "250m" }
       limits: { memory: "1Gi", cpu: "500m" }

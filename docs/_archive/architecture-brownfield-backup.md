@@ -702,7 +702,7 @@ This document supplements existing project architecture by defining how new comp
 - **Primary Documentation:** docs/prd.md (comprehensive German PRD with 13 functional requirements FA1-FA13)
 - **Implementation Plans:** docs/sprint2-implementation-plan.md for current development phase
 - **Architectural Estimates:** docs/aufwandschätzung.md containing effort estimations
-- **API Documentation:** ArzTi3Server.http with endpoint definitions and testing scenarios
+- **API Documentation:** ArzTiV2Server.http with endpoint definitions and testing scenarios
 - **Client Libraries:** Multi-language client support (C#, PHP, Python) in Client/ directory
 
 #### Identified Constraints
@@ -1149,7 +1149,7 @@ Accept: application/json
   "Logging": {
     "LogLevel": {
       "Default": "Warning",
-      "ArzTi3Server.Performance": "Information",
+      "ArzTiV2Server.Performance": "Information",
       "Microsoft.EntityFrameworkCore": "Warning"
     }
   },

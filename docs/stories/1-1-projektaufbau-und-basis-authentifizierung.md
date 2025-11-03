@@ -18,7 +18,7 @@ Als ARZ-Systementwickler möchte ich sicheren API-Zugang mit Basis-Authentifizie
 ## Tasks / Subtasks
 
 - [ ] **Task 1: Verify and enhance project structure** (AC: 1)
-  - [ ] Validate existing ArzTi3Server project configuration for .NET 8.0
+  - [ ] Validate existing ArzTiV2Server project configuration for .NET 8.0
   - [ ] Ensure solution builds successfully with all dependencies
   - [ ] Verify project references and package dependencies are correct
   
@@ -47,7 +47,7 @@ Als ARZ-Systementwickler möchte ich sicheren API-Zugang mit Basis-Authentifizie
   - [ ] Ensure consistent error response format across endpoints
 
 - [ ] **Task 6: Create integration tests for authentication** (AC: 6)
-  - [ ] Set up test infrastructure using existing ArzTi3Server.Tests project
+  - [ ] Set up test infrastructure using existing ArzTiV2Server.Tests project
   - [ ] Create tests for successful authentication with valid credentials
   - [ ] Create tests for authentication failure scenarios (invalid credentials, missing headers)
   - [ ] Verify proper HTTP status codes in test responses
@@ -69,7 +69,7 @@ Als ARZ-Systementwickler möchte ich sicheren API-Zugang mit Basis-Authentifizie
 - Follow .NET 8.0 best practices for authentication middleware
 
 **Testing Strategy Focus:**
-- Use existing xUnit test framework in `ArzTi3Server.Tests` project
+- Use existing xUnit test framework in `ArzTiV2Server.Tests` project
 - Create comprehensive integration tests for authentication scenarios
 - Mock ArzSw database connections for unit testing
 - Verify proper HTTP status code responses (401, 400, 500)
@@ -84,9 +84,9 @@ Als ARZ-Systementwickler möchte ich sicheren API-Zugang mit Basis-Authentifizie
 
 **Existing Project Structure Analysis:**
 - Solution already exists: `ArzTiV2.sln` with multiple projects
-- Main API project: `ArzTi3Server/` (.NET 8.0 Web API)
+- Main API project: `ArzTiV2Server/` (.NET 8.0 Web API)
 - Domain project: `ArzTiServer.Domain/` (shared entities and contracts)
-- Test project: `ArzTi3Server.Tests/` (integration and unit tests)
+- Test project: `ArzTiV2Server.Tests/` (integration and unit tests)
 - Authentication middleware already partially implemented: `Authentication/BasicAuthenticationHandler.cs`
 
 **Dependencies Already Available:**
@@ -106,9 +106,9 @@ Als ARZ-Systementwickler möchte ich sicheren API-Zugang mit Basis-Authentifizie
 - **Tech Spec:** [docs/tech-spec-epic-1.md#Security-Architecture] - Authentication requirements and implementation details
 - **PRD:** [docs/prd/epic-1-grundlagen-kern-infrastruktur.md#Story-1.1] - Business requirements and acceptance criteria  
 - **Architecture:** [docs/architecture/security-architecture.md] - Security patterns and authentication flow
-- **Project Structure:** [ArzTi3Server/Authentication/BasicAuthenticationHandler.cs] - Existing authentication handler
-- **Dependencies:** [ArzTi3Server/ArzTi3Server.csproj] - BCrypt.Net-Next and authentication packages
-- **Test Framework:** [ArzTi3Server.Tests/] - Integration test patterns and infrastructure
+- **Project Structure:** [ArzTiV2Server/Authentication/BasicAuthenticationHandler.cs] - Existing authentication handler
+- **Dependencies:** [ArzTiV2Server/ArzTiV2Server.csproj] - BCrypt.Net-Next and authentication packages
+- **Test Framework:** [ArzTiV2Server.Tests/] - Integration test patterns and infrastructure
 
 ## Dev Agent Record
 

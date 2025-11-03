@@ -28,7 +28,7 @@
   "Logging": {
     "LogLevel": {
       "Default": "Warning",
-      "ArzTi3Server.Performance": "Information",
+      "ArzTiV2Server.Performance": "Information",
       "Microsoft.EntityFrameworkCore": "Warning"
     }
   },
@@ -151,4 +151,4 @@ CREATE TABLE IF NOT EXISTS prescription_query_metrics (
 2. **Configuration Rollback:** Revert to previous appsettings configuration
 3. **Application Rollback:** Previous version deployment ready for instant activation
 4. **Database Rollback:** Performance tables can be dropped without affecting core functionality
-
+

@@ -1,4 +1,4 @@
-# ArzTiClient - the C# library for the ArzTi3 Prescription Mediation API
+# ArzTiClient - the C# library for the ArzTiV2 Prescription Mediation API
 
 API for ARZ prescription insurance mediation system
 

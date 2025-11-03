@@ -211,7 +211,7 @@ public interface ITenantService
 - **Existing ARZ Systems** - API consumers requiring prescription data access
 
 **Internal Project References:**
-- **ArzTi3Server.Domain** - Shared entity models and repository contracts
+- **ArzTiV2Server.Domain** - Shared entity models and repository contracts
 - **Existing Database Schemas** - Leverages current prescription table structures without modifications
 
 **Integration Constraints:**
@@ -260,7 +260,7 @@ public interface ITenantService
 
 | AC# | Spec Section | Component/API | Test Idea |
 |-----|-------------|---------------|-----------|
-| 1 | Services and Modules | ArzTi3Server project structure | Verify project builds and runs |
+| 1 | Services and Modules | ArzTiV2Server project structure | Verify project builds and runs |
 | 2-3 | Security Architecture | BasicAuthenticationHandler | Test valid/invalid credentials |
 | 4 | APIs and Interfaces | [Authorize] attribute on controllers | Test unauthenticated requests return 401 |
 | 5 | Non-Functional Requirements | Authentication error responses | Verify HTTP status codes |
